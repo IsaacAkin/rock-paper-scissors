@@ -4,4 +4,11 @@ function getComputerChoice() {
     return items[Math.floor(Math.random()*items.length)];
 }
 
-console.log(getComputerChoice());
+// console.log(getComputerChoice());
+
+function toLower(string) {
+    return string.toLowerCase();
+}
+
+// console.log(toLower("GOoDbyE"));
+
