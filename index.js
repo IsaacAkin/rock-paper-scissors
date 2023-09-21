@@ -47,6 +47,26 @@ function detectWinner(playerCounter, computerCounter) {
     }
 }
 
-const playerSelection = "Rock".toLowerCase();
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+/** Function that calls playRound 5 times and outputs the winner of the set */
+function game() {
+
+    for (let i = 0; i < 5; i++) {
+        const playerSelection = prompt("Rock, Paper or Scissors: ").toLowerCase();
+        const computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+
+        if (playerCounter === 3 && computerCounter < 3) {
+            console.log(detectWinner(playerCounter, computerCounter));
+            break;
+        } else if (computerCounter === 3 && playerCounter < 3) {
+            console.log(detectWinner(playerCounter, computerCounter));
+            break;
+        }
+    }
+
+    if (playerCounter < 3 && computerCounter < 3) {
+        console.log(detectWinner(playerCounter, computerCounter));
+    }
+}
+
+game();
