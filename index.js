@@ -1,15 +1,16 @@
 /** Counters for determining who has the higher score */
 let playerCounter = 0;
 let computerCounter = 0;
+let numberOfRounds = 5;
 
-/** Function that randomly generates the computers choice */
+/** Randomly generates the computers choice */
 function getComputerChoice() {
     let items = ["rock", "paper", "scissors"];
 
     return items[Math.floor(Math.random()*items.length)];
 }
 
-/** Function that uses if / else if statements to determine the winner of the match */
+/** Plays one round and determines the winner of the match */
 function playRound(playerSelection, computerSelection) {
 
     if (computerSelection === "rock" && playerSelection === "paper") {
@@ -26,31 +27,30 @@ function playRound(playerSelection, computerSelection) {
         return "You Lose! Scissors beats Paper";
     } else if (computerSelection === "scissors" && playerSelection === "rock") {
         playerCounter += 1;
-        return "You win! Rock beats Scissors";
+        return "You Win! Rock beats Scissors";
     } else if (computerSelection === "rock" && playerSelection === "scissors") {
         computerCounter += 1;
         return "You Lose! Rock beats Scissors";
     } else {
+        numberOfRounds += 1;
         return "draw";
     }
 }
 
-/** Function that detects the winner based on who has the higher score at the end of the round */
+/** Detects the winner based on who has the higher score at the end of the round */
 function detectWinner(playerCounter, computerCounter) {
-
-    if (playerCounter === computerCounter) {
-        return `Draw! Player: ${playerCounter} - Computer: ${computerCounter}`
-    } else if (playerCounter > computerCounter) {
+ 
+    if (playerCounter > computerCounter) {
         return `Congratulations! You Won! Player: ${playerCounter} - Computer: ${computerCounter}`
     } else if (computerCounter > playerCounter) {
         return `Sorry, You Lose! Computer: ${computerCounter} - Player: ${playerCounter}`
     }
 }
 
-/** Function that calls playRound 5 times and outputs the winner of the set */
+/** Plays the game 5 times and outputs the winner of the set */
 function game() {
 
-    for (let i = 0; i < 5; i++) {
+    for (let round = 0; round < numberOfRounds; round++) {
         const playerSelection = prompt("Rock, Paper or Scissors: ").toLowerCase();
         const computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
@@ -62,10 +62,6 @@ function game() {
             console.log(detectWinner(playerCounter, computerCounter));
             break;
         }
-    }
-
-    if (playerCounter < 3 && computerCounter < 3) {
-        console.log(detectWinner(playerCounter, computerCounter));
     }
 }
 
