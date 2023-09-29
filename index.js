@@ -48,12 +48,12 @@ function detectWinner(playerCounter, computerCounter) {
 }
 
 const results = document.querySelector('#results');
-const rockChoice = document.querySelector('#rock');
-const paperChoice = document.querySelector('#paper');
-const scissorsChoice = document.querySelector('#scissors');
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorsBtn = document.querySelector('#scissors');
 
 function eventListeners() {
-    rockChoice.addEventListener('click', () => {
+    rockBtn.addEventListener('click', () => {
         const playerSelection = "rock";
         const computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
@@ -61,7 +61,7 @@ function eventListeners() {
         // console.log(result);
     });
 
-    paperChoice.addEventListener('click', () => {
+    paperBtn.addEventListener('click', () => {
         const playerSelection = "paper";
         const computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
@@ -69,7 +69,7 @@ function eventListeners() {
         // console.log(result);
     });
 
-    scissorsChoice.addEventListener('click', () => {
+    scissorsBtn.addEventListener('click', () => {
         const playerSelection = "scissors";
         const computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
