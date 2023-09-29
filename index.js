@@ -47,22 +47,55 @@ function detectWinner(playerCounter, computerCounter) {
     }
 }
 
-/** Plays the game 5 times and outputs the winner of the set */
-function game() {
+const results = document.querySelector('#results');
+const rockChoice = document.querySelector('#rock');
+const paperChoice = document.querySelector('#paper');
+const scissorsChoice = document.querySelector('#scissors');
 
-    for (let round = 0; round < numberOfRounds; round++) {
-        const playerSelection = prompt("Rock, Paper or Scissors: ").toLowerCase();
+function eventListeners() {
+    rockChoice.addEventListener('click', () => {
+        const playerSelection = "rock";
         const computerSelection = getComputerChoice();
         console.log(playRound(playerSelection, computerSelection));
+        // const result = playRound(playerSelection, computerSelection);
+        // console.log(result);
+    });
 
-        if (playerCounter === 3 && computerCounter < 3) {
-            console.log(detectWinner(playerCounter, computerCounter));
-            break;
-        } else if (computerCounter === 3 && playerCounter < 3) {
-            console.log(detectWinner(playerCounter, computerCounter));
-            break;
-        }
-    }
+    paperChoice.addEventListener('click', () => {
+        const playerSelection = "paper";
+        const computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+        // const result = playRound(playerSelection, computerSelection);
+        // console.log(result);
+    });
+
+    scissorsChoice.addEventListener('click', () => {
+        const playerSelection = "scissors";
+        const computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+        // const result = playRound(playerSelection, computerSelection);
+        // console.log(result);
+    });
 }
 
-game();
+eventListeners();
+
+// /** Plays the game 5 times and outputs the winner of the set */
+// function game() {
+
+//     for (let round = 0; round < numberOfRounds; round++) {
+//         const playerSelection = prompt("Rock, Paper or Scissors: ").toLowerCase();
+//         const computerSelection = getComputerChoice();
+//         console.log(playRound(playerSelection, computerSelection));
+
+//         if (playerCounter === 3 && computerCounter < 3) {
+//             console.log(detectWinner(playerCounter, computerCounter));
+//             break;
+//         } else if (computerCounter === 3 && playerCounter < 3) {
+//             console.log(detectWinner(playerCounter, computerCounter));
+//             break;
+//         }
+//     }
+// }
+
+// game();
