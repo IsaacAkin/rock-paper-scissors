@@ -1,3 +1,5 @@
+"use strict"
+
 /** Counters for determining who has the higher score */
 let playerCounter = 0;
 let computerCounter = 0;
@@ -47,55 +49,43 @@ function detectWinner(playerCounter, computerCounter) {
     }
 }
 
-const results = document.querySelector('#results');
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
+let displayPlayerScore = document.querySelector('#player-score');
+let displayComputerScore = document.querySelector('#computer-score');
+let displayRoundOutcome = document.querySelector('#round-outcome');
 
 function eventListeners() {
     rockBtn.addEventListener('click', () => {
         const playerSelection = "rock";
         const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
-        // const result = playRound(playerSelection, computerSelection);
-        // console.log(result);
+
+        displayRoundOutcome.textContent = playRound(playerSelection, computerSelection);
+
+        displayPlayerScore.textContent = playerCounter;
+        displayComputerScore.textContent = computerCounter;
     });
 
     paperBtn.addEventListener('click', () => {
         const playerSelection = "paper";
         const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
-        // const result = playRound(playerSelection, computerSelection);
-        // console.log(result);
+
+        displayRoundOutcome.textContent = playRound(playerSelection, computerSelection);
+
+        displayPlayerScore.textContent = playerCounter;
+        displayComputerScore.textContent = computerCounter;
     });
 
     scissorsBtn.addEventListener('click', () => {
         const playerSelection = "scissors";
         const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
-        // const result = playRound(playerSelection, computerSelection);
-        // console.log(result);
+
+        displayRoundOutcome.textContent = playRound(playerSelection, computerSelection);
+        
+        displayPlayerScore.textContent = playerCounter;
+        displayComputerScore.textContent = computerCounter;
     });
 }
 
 eventListeners();
-
-// /** Plays the game 5 times and outputs the winner of the set */
-// function game() {
-
-//     for (let round = 0; round < numberOfRounds; round++) {
-//         const playerSelection = prompt("Rock, Paper or Scissors: ").toLowerCase();
-//         const computerSelection = getComputerChoice();
-//         console.log(playRound(playerSelection, computerSelection));
-
-//         if (playerCounter === 3 && computerCounter < 3) {
-//             console.log(detectWinner(playerCounter, computerCounter));
-//             break;
-//         } else if (computerCounter === 3 && playerCounter < 3) {
-//             console.log(detectWinner(playerCounter, computerCounter));
-//             break;
-//         }
-//     }
-// }
-
-// game();
