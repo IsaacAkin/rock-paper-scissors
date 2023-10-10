@@ -3,7 +3,6 @@
 /** Counters for determining who has the higher score */
 let playerCounter = 0;
 let computerCounter = 0;
-let numberOfRounds = 5;
 
 /** Randomly generates the computers choice */
 function getComputerChoice() {
@@ -34,19 +33,26 @@ function playRound(playerSelection, computerSelection) {
         computerCounter += 1;
         return "You Lose! Rock beats Scissors";
     } else {
-        numberOfRounds += 1;
         return "draw";
     }
 }
 
 /** Detects the winner based on who has the higher score at the end of the round */
 function detectWinner(playerCounter, computerCounter) {
- 
-    if (playerCounter > computerCounter) {
-        return `Congratulations! You Won! Player: ${playerCounter} - Computer: ${computerCounter}`
-    } else if (computerCounter > playerCounter) {
-        return `Sorry, You Lose! Computer: ${computerCounter} - Player: ${playerCounter}`
+
+    if (playerCounter === 5 && computerCounter < 5) {
+        resetGame();
+        return "Congratulations! You Won!";
+    } else if (computerCounter === 5 && playerCounter < 5) {
+        resetGame();
+        return "Sorry, you lose!";
     }
+}
+
+/** Resets the scores to 0 */
+function resetGame() {
+    playerCounter = 0;
+    computerCounter = 0;
 }
 
 const rockBtn = document.querySelector('#rock');
@@ -57,12 +63,18 @@ let displayComputerScore = document.querySelector('#computer-score');
 let displayRoundOutcome = document.querySelector('#round-outcome');
 
 function eventListeners() {
+
     rockBtn.addEventListener('click', () => {
         const playerSelection = "rock";
         const computerSelection = getComputerChoice();
-
+        
         displayRoundOutcome.textContent = playRound(playerSelection, computerSelection);
 
+        const winner = detectWinner(playerCounter, computerCounter);
+        if (winner) {
+            displayRoundOutcome.textContent = winner;
+        }
+        
         displayPlayerScore.textContent = playerCounter;
         displayComputerScore.textContent = computerCounter;
     });
@@ -73,6 +85,11 @@ function eventListeners() {
 
         displayRoundOutcome.textContent = playRound(playerSelection, computerSelection);
 
+        const winner = detectWinner(playerCounter, computerCounter);
+        if (winner) {
+            displayRoundOutcome.textContent = winner;
+        }
+
         displayPlayerScore.textContent = playerCounter;
         displayComputerScore.textContent = computerCounter;
     });
@@ -82,6 +99,11 @@ function eventListeners() {
         const computerSelection = getComputerChoice();
 
         displayRoundOutcome.textContent = playRound(playerSelection, computerSelection);
+
+        const winner = detectWinner(playerCounter, computerCounter);
+        if (winner) {
+            displayRoundOutcome.textContent = winner;
+        }
         
         displayPlayerScore.textContent = playerCounter;
         displayComputerScore.textContent = computerCounter;
