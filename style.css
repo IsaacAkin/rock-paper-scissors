@@ -1,0 +1,33 @@
+* {
+    font-family: "Plus Jakarta Sans";
+}
+
+body {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    text-align: center;
+}
+
+.results {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+/* .round-outcome {} */
+
+.btn-container {
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.btn-container button {
+    width: 200px;
+    height: 200px;
+    flex: 1;
+}

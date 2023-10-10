@@ -1,7 +1,8 @@
+"use strict"
+
 /** Counters for determining who has the higher score */
 let playerCounter = 0;
 let computerCounter = 0;
-let numberOfRounds = 5;
 
 /** Randomly generates the computers choice */
 function getComputerChoice() {
@@ -32,37 +33,81 @@ function playRound(playerSelection, computerSelection) {
         computerCounter += 1;
         return "You Lose! Rock beats Scissors";
     } else {
-        numberOfRounds += 1;
         return "draw";
     }
 }
 
 /** Detects the winner based on who has the higher score at the end of the round */
 function detectWinner(playerCounter, computerCounter) {
- 
-    if (playerCounter > computerCounter) {
-        return `Congratulations! You Won! Player: ${playerCounter} - Computer: ${computerCounter}`
-    } else if (computerCounter > playerCounter) {
-        return `Sorry, You Lose! Computer: ${computerCounter} - Player: ${playerCounter}`
+
+    if (playerCounter === 5 && computerCounter < 5) {
+        resetGame();
+        return "Congratulations! You Won!";
+    } else if (computerCounter === 5 && playerCounter < 5) {
+        resetGame();
+        return "Sorry, you lose!";
     }
 }
 
-/** Plays the game 5 times and outputs the winner of the set */
-function game() {
+/** Resets the scores to 0 */
+function resetGame() {
+    playerCounter = 0;
+    computerCounter = 0;
+}
 
-    for (let round = 0; round < numberOfRounds; round++) {
-        const playerSelection = prompt("Rock, Paper or Scissors: ").toLowerCase();
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorsBtn = document.querySelector('#scissors');
+let displayPlayerScore = document.querySelector('#player-score');
+let displayComputerScore = document.querySelector('#computer-score');
+let displayRoundOutcome = document.querySelector('#round-outcome');
+
+function eventListeners() {
+
+    rockBtn.addEventListener('click', () => {
+        const playerSelection = "rock";
         const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
+        
+        displayRoundOutcome.textContent = playRound(playerSelection, computerSelection);
 
-        if (playerCounter === 3 && computerCounter < 3) {
-            console.log(detectWinner(playerCounter, computerCounter));
-            break;
-        } else if (computerCounter === 3 && playerCounter < 3) {
-            console.log(detectWinner(playerCounter, computerCounter));
-            break;
+        const winner = detectWinner(playerCounter, computerCounter);
+        if (winner) {
+            displayRoundOutcome.textContent = winner;
         }
-    }
+        
+        displayPlayerScore.textContent = playerCounter;
+        displayComputerScore.textContent = computerCounter;
+    });
+
+    paperBtn.addEventListener('click', () => {
+        const playerSelection = "paper";
+        const computerSelection = getComputerChoice();
+
+        displayRoundOutcome.textContent = playRound(playerSelection, computerSelection);
+
+        const winner = detectWinner(playerCounter, computerCounter);
+        if (winner) {
+            displayRoundOutcome.textContent = winner;
+        }
+
+        displayPlayerScore.textContent = playerCounter;
+        displayComputerScore.textContent = computerCounter;
+    });
+
+    scissorsBtn.addEventListener('click', () => {
+        const playerSelection = "scissors";
+        const computerSelection = getComputerChoice();
+
+        displayRoundOutcome.textContent = playRound(playerSelection, computerSelection);
+
+        const winner = detectWinner(playerCounter, computerCounter);
+        if (winner) {
+            displayRoundOutcome.textContent = winner;
+        }
+        
+        displayPlayerScore.textContent = playerCounter;
+        displayComputerScore.textContent = computerCounter;
+    });
 }
 
-game();
+eventListeners();
