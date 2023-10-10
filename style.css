@@ -17,9 +17,7 @@ body {
     flex-wrap: wrap;
 }
 
-#round-outcome {
-    /*  */
-}
+/* .round-outcome {} */
 
 .btn-container {
     border: 1px solid black;
@@ -31,5 +29,5 @@ body {
 .btn-container button {
     width: 200px;
     height: 200px;
-    /* flex: 1; */
+    flex: 1;
 }
