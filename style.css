@@ -3,31 +3,67 @@
 }
 
 body {
-    border: 1px solid black;
+    background-color: rgb(34, 34, 36);
+    color: white;
     display: flex;
     flex-direction: column;
     height: 100vh;
     text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.heading-container {
+    background-color: rgb(19, 18, 18);
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .results {
-    border: 1px solid black;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
+    gap: 70px;
 }
 
-/* .round-outcome {} */
+.outcome-container {
+    font-size: 25px;
+}
+
+.player-results,
+.computer-results {
+    font-size: 20px;
+}
+
+.player-icon,
+.computer-icon {
+    font-size: 80px;
+    margin: 0;
+    padding: 0;
+}
 
 .btn-container {
-    /* border: 1px solid black; */
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-wrap: wrap;
+    gap: 20px;
 }
 
 .btn-container button {
     width: 200px;
     height: 200px;
-    flex: 1;
+    border-radius: 20px;
+    border: none;
+    font-size: 100px;
+    background-color: rgb(73, 73, 73);
+}
+
+button:hover {
+    cursor: pointer;
+    filter: brightness(1);
+    background-color: grey;
 }
