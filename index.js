@@ -3,6 +3,7 @@
 /** Counters for determining who has the higher score */
 let playerCounter = 0;
 let computerCounter = 0;
+let cpuIcon = ""
 
 /** Randomly generates the computers choice */
 function getComputerChoice() {
@@ -16,23 +17,30 @@ function playRound(playerSelection, computerSelection) {
 
     if (computerSelection === "rock" && playerSelection === "paper") {
         playerCounter += 1;
+        cpuIcon = "🪨";
         return "You Win! Paper beats Rock";
     } else if (computerSelection === "paper" && playerSelection === "rock") {
         computerCounter += 1;
+        cpuIcon = "📃";
         return "You Lose! Paper beats Rock";
     } else if (computerSelection === "paper" && playerSelection === "scissors") {
         playerCounter += 1;
+        cpuIcon = "📃";
         return "You Win! Scissors beats paper";
     } else if (computerSelection === "scissors" && playerSelection === "paper") {
         computerCounter += 1;
+        cpuIcon = "✂️";
         return "You Lose! Scissors beats Paper";
     } else if (computerSelection === "scissors" && playerSelection === "rock") {
         playerCounter += 1;
+        cpuIcon = "✂️";
         return "You Win! Rock beats Scissors";
     } else if (computerSelection === "rock" && playerSelection === "scissors") {
         computerCounter += 1;
+        cpuIcon = "🪨";
         return "You Lose! Rock beats Scissors";
     } else {
+        cpuIcon = computerSelection === "rock" ? "🪨" : computerSelection === "paper" ? "📃" : "✂️";
         return "draw";
     }
 }
@@ -58,9 +66,13 @@ function resetGame() {
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
-let displayPlayerScore = document.querySelector('#player-score');
-let displayComputerScore = document.querySelector('#computer-score');
-let displayRoundOutcome = document.querySelector('#round-outcome');
+
+const playerIcon = document.querySelector('#player-icon');
+const computerIcon = document.querySelector('#computer-icon');
+
+const displayPlayerScore = document.querySelector('#player-score');
+const displayComputerScore = document.querySelector('#computer-score');
+const displayRoundOutcome = document.querySelector('#round-outcome');
 
 function eventListeners() {
 
@@ -76,7 +88,10 @@ function eventListeners() {
         }
         
         displayPlayerScore.textContent = playerCounter;
+        playerIcon.textContent = rockBtn.textContent;
+
         displayComputerScore.textContent = computerCounter;
+        computerIcon.textContent = cpuIcon;
     });
 
     paperBtn.addEventListener('click', () => {
@@ -91,7 +106,10 @@ function eventListeners() {
         }
 
         displayPlayerScore.textContent = playerCounter;
+        playerIcon.textContent = paperBtn.textContent;
+
         displayComputerScore.textContent = computerCounter;
+        computerIcon.textContent = cpuIcon;
     });
 
     scissorsBtn.addEventListener('click', () => {
@@ -106,7 +124,10 @@ function eventListeners() {
         }
         
         displayPlayerScore.textContent = playerCounter;
+        playerIcon.textContent = scissorsBtn.textContent;
+        
         displayComputerScore.textContent = computerCounter;
+        computerIcon.textContent = cpuIcon;
     });
 }
 
