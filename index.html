@@ -12,16 +12,31 @@
     <title>Rock Paper Scissors</title>
   </head>
   <body>
-    <div class="results">
-      <p>Player : <span id="player-score">0</span></p>
-      <p>Computer: <span id="computer-score">0</span></p>
+    <div class="heading-container">
+      <h1>Rock Paper Scissors</h1>
     </div>
-    <p id="round-outcome" class="round-outcome"></p>
 
-    <div class="btn-container">
-      <button id="rock">Rock</button>
-      <button id="paper">Paper</button>
-      <button id="scissors">Scissors</button>
+    <div class="game-container">
+      <div class="outcome-container">
+        <p id="round-outcome" class="round-outcome">Pick your weapon</p>
+      </div>
+
+      <div class="results">
+        <div class="player-results">
+          <p id="player-icon" class="player-icon">?</p>
+          <p>Player : <span id="player-score">0</span></p>
+        </div>
+        <div class="computer-results">
+          <p id="computer-icon" class="computer-icon">?</p>
+          <p>Computer: <span id="computer-score">0</span></p>
+        </div>
+      </div>
+
+      <div class="btn-container">
+        <button id="rock">🪨</button>
+        <button id="paper">📃</button>
+        <button id="scissors">✂️</button>
+      </div>
     </div>
   </body>
 </html>
